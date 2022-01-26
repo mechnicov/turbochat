@@ -12,6 +12,7 @@ gem "turbo-rails"
 gem "stimulus-rails"
 gem "cssbundling-rails"
 gem "redis", "~> 4.0"
+gem "devise", "~> 4.8"
 
 group :development, :test do
   gem "pry-rails"
