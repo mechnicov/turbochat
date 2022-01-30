@@ -1,0 +1,8 @@
+<div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg my-4 py-2 pl-1">
+  <div class="flex flex-row">
+    <div class="basis-1/12"><%= l(message.created_at, format: :short) %></div>
+    <div class="basis-3/12"><%= message.user.email %></div>
+    <div class="basis-7/12"><%= message.body %></div>
+    <div class="basis-1/12"><span class="cursor-pointer"><%= likes(message) %></span></div>
+  </div>
+</div>
