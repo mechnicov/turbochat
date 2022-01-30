@@ -1,19 +1,17 @@
 <%= turbo_stream_from @room %>
 
 <div class="flex flex-col h-96 justify-between">
-  <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+  <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8" id="chat-container">
     <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
       <%= turbo_frame_tag :messages do %>
-        <%= render @messages %>
+        <%= render partial: "messages/message", collection: @messages, locals: { user: current_user } %>
       <% end %>
     </div>
   </div>
 </div>
 
-<% if current_user.present? %>
-  <%= form_with model: @new_message do |f| %>
-    <div class="rounded-md shadow-sm -space-y-px">
-      <%= f.text_field :body, autofocus: true, required: true, placeholder: "Your text", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" %>
-      <%= f.hidden_field :room_id, value: @room.id %>
-  <% end %>
+<%= form_with model: @new_message, data: { controller: "chat_refresh", action: "turbo:submit-end->chat_refresh#clearInput" } do |f| %>
+  <div class="rounded-md shadow-sm -space-y-px">
+    <%= f.text_field :body, autofocus: true, required: true, placeholder: "Your text", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" %>
+    <%= f.hidden_field :room_id, value: @room.id %>
 <% end %>
