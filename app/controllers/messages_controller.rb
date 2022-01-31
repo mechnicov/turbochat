@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
 
     if @new_message.save
       room = @new_message.room
-      @new_message.broadcast_append_to room, target: "room_#{room.id}_messages", locals: { user: current_user }
+      @new_message.broadcast_append_to room, target: "room_#{room.id}_messages", locals: { user: current_user, message: @new_message.decorate }
     end
   end
 
@@ -20,8 +20,8 @@ class MessagesController < ApplicationController
 
     room = @message.room
 
-    @message.broadcast_replace_to [current_user, room], target: "message_like_#{@message.id}", partial: "messages/heart", locals: { user: current_user, message: @message }
-    @message.broadcast_replace_to room, target: "message_likes_count_#{@message.id}", partial: "messages/likes_count", locals: { user: current_user, message: @message }
+    @message.broadcast_replace_to [current_user, room], target: "message_like_#{@message.id}", partial: "messages/heart", locals: { user: current_user, message: @message.decorate }
+    @message.broadcast_replace_to room, target: "message_likes_count_#{@message.id}", partial: "messages/likes_count", locals: { user: current_user, message: @message.decorate }
   end
 
   private
