@@ -1,11 +1,10 @@
 <%= turbo_stream_from @room %>
+<%= turbo_stream_from [current_user, @room] %>
 
 <div class="flex flex-col h-96 justify-between">
   <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8" id="chat-container">
-    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-      <%= turbo_frame_tag :messages do %>
-        <%= render partial: "messages/message", collection: @messages, locals: { user: current_user } %>
-      <% end %>
+    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8" id="room_<%= @room.id %>_messages">
+      <%= render partial: "messages/message", collection: @messages, locals: { user: current_user } %>
     </div>
   </div>
 </div>
