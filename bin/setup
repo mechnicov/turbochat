@@ -14,6 +14,9 @@ FileUtils.chdir APP_ROOT do
   # Add necessary setup steps to this file.
 
   puts "== Installing dependencies =="
+  FileUtils.rm_rf "node_modules"
+  system! "yarn"
+
   system! "gem install bundler --conservative"
   system("bundle check") || system!("bundle install")
 
@@ -26,6 +29,7 @@ FileUtils.chdir APP_ROOT do
   system! "bin/rails db:prepare"
 
   puts "\n== Removing old logs and tempfiles =="
+  Dir["app/assets/builds/application*"].each { |file| FileUtils.rm file }
   system! "bin/rails log:clear tmp:clear"
 
   puts "\n== Restarting application server =="

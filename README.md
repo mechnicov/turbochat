@@ -1,24 +1,25 @@
-# README
+## Turbochat
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Description
 
-Things you may want to cover:
+Simple chat with Hotwire, Turbo and Stimulus.
 
-* Ruby version
+Implemented in Ruby 3.0 using Rails 7.0 and PostgreSQL.
 
-* System dependencies
+### Launching
 
-* Configuration
+1. Download or clone repo. Install all dependencies and prepare database
 
-* Database creation
+```bash
+$ bin/setup
+```
 
-* Database initialization
+2. Start server
 
-* How to run the test suite
+```bash
+$ bin/dev
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+### License
 
-* Deployment instructions
-
-* ...
+MIT – see `LICENSE`
