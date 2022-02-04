@@ -1,13 +1,23 @@
-<div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg my-4 py-2 pl-1">
-  <div class="flex flex-row">
-    <div class="basis-1/12"><%= l(message.created_at, format: :short) %></div>
-    <div class="basis-3/12"><%= message.user.email %></div>
-    <div class="basis-7/12"><%= message.body %></div>
-    <div class="basis-1/12">
-      <%= link_to like_message_path(message), data: { "turbo-method": :post } do %>
-        <%= render partial: "messages/heart", locals: { user: user, message: message } %>
-        <%= render partial: "messages/likes_count", locals: { message: message } %>
-      <% end %>
+<div class="my-5 w-full shadow-md bg-gray-100 px-4 py-2">
+  <div class="relative w-full">
+    <p class="break-words text-gray-700 pr-14 text-lg pt-4 px-4">
+      <%= message.body %>
+    </p>
+  </div>
+  <div class="flex message-author_<%= message.user.id %>">
+    <div class="relative mt-1 px-4 pt-1 pb-4 w-max max-w-full text-gray-500 flex min-w-5 message-author_1 rounded-l-md rounded-b-md font-light">
+      <em>
+        <%= message.user.email %>
+      </em>
+      <sub class="text-xs absolute right-4 bottom-0 text-gray-400 font-light">
+        <%= l(message.created_at, format: :short) %>
+      </sub>
+      <sub class="text-xs absolute left-4 bottom-0">
+        <%= link_to like_message_path(message), data: { "turbo-method": :post } do %>
+          <%= render partial: "messages/heart", locals: { user: user, message: message } %>
+          <%= render partial: "messages/likes_count", locals: { message: message } %>
+        <% end %>
+      </sub>
     </div>
   </div>
 </div>
