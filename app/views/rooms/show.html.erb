@@ -2,8 +2,12 @@
 <%= turbo_stream_from [current_user, @room] %>
 
 <div class="flex flex-col justify-between h-grow">
-  <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8" id="chat-container">
+  <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8"
+       id="chat-container"
+       data-controller="scroll"
+       data-scroll-target="messages">
     <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8" id="room_<%= @room.id %>_messages">
+
       <%= render partial: "messages/message", collection: @messages, locals: { user: current_user } %>
     </div>
   </div>

@@ -1,8 +1,7 @@
 <div class="message-container <%= dom_id(message) %> author_<%= message.user.id %>"
      data-controller="message"
      data-message-mine-class="mine"
-     data-message-owner-id-value="<%= message.user.id %>"
-     data-message-container-selector-value="<%= dom_id(message.room, :container) %>">
+     data-message-owner-id-value="<%= message.user.id %>">
   <div class="content my-5 max-width-half grid shadow-md bg-gray-100 px-4 py-2">
     <div class="relative">
       <p class="break-words text-gray-700 pr-14 text-lg pt-4 px-4">

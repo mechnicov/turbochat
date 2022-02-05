@@ -4,5 +4,8 @@
 
 import { application } from "./application"
 
-import MessageController from "./message_controller"
+import ScrollController from "./scroll_controller.js"
+application.register("scroll", ScrollController)
+
+import MessageController from "./message_controller.js"
 application.register("message", MessageController)
