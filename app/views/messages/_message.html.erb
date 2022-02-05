@@ -1,23 +1,29 @@
-<div class="my-5 w-full shadow-md bg-gray-100 px-4 py-2">
-  <div class="relative w-full">
-    <p class="break-words text-gray-700 pr-14 text-lg pt-4 px-4">
-      <%= message.body %>
-    </p>
-  </div>
-  <div class="flex message-author_<%= message.user.id %>">
-    <div class="relative mt-1 px-4 pt-1 pb-4 w-max max-w-full text-gray-500 flex min-w-5 message-author_1 rounded-l-md rounded-b-md font-light">
-      <em>
-        <%= message.user.email %>
-      </em>
-      <sub class="text-xs absolute right-4 bottom-0 text-gray-400 font-light">
-        <%= l(message.created_at, format: :short) %>
-      </sub>
-      <sub class="text-xs absolute left-4 bottom-0">
-        <%= link_to like_message_path(message), data: { "turbo-method": :post } do %>
-          <%= render partial: "messages/heart", locals: { user: user, message: message } %>
-          <%= render partial: "messages/likes_count", locals: { message: message } %>
-        <% end %>
-      </sub>
+<div class="message-container <%= dom_id(message) %> author_<%= message.user.id %>"
+     data-controller="message"
+     data-message-mine-class="mine"
+     data-message-owner-id-value="<%= message.user.id %>"
+     data-message-container-selector-value="<%= dom_id(message.room, :container) %>">
+  <div class="content my-5 max-width-half grid shadow-md bg-gray-100 px-4 py-2">
+    <div class="relative">
+      <p class="break-words text-gray-700 pr-14 text-lg pt-4 px-4">
+        <%= message.body %>
+      </p>
+    </div>
+    <div class="flex message-author_<%= message.user.id %>">
+      <div class="relative mt-1 px-4 pt-1 pb-4 w-max max-w-full text-gray-500 flex min-w-5 message-author_1 rounded-l-md rounded-b-md font-light">
+        <em>
+          <%= message.user.email %>
+        </em>
+        <sub class="text-xs absolute right-4 bottom-0 text-gray-400 font-light">
+          <%= l(message.created_at, format: :short) %>
+        </sub>
+        <sub class="text-xs absolute left-4 bottom-0">
+          <%= link_to like_message_path(message), data: { "turbo-method": :post } do %>
+            <%= render partial: "messages/heart", locals: { user: user, message: message } %>
+            <%= render partial: "messages/likes_count", locals: { message: message } %>
+          <% end %>
+        </sub>
+      </div>
     </div>
   </div>
 </div>

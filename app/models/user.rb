@@ -5,4 +5,9 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  def username
+    # "john.doe@example.com" -> "John Doe"
+    email.split('@').first.parameterize.split('-').join(' ').titlecase
+  end
 end

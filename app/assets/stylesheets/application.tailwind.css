@@ -5,3 +5,14 @@
 .h-grow {
   height: calc(100vh - 13rem);
 }
+
+.max-width-half {
+  width: fit-content;
+  max-width: 80%;
+}
+
+.mine,
+.mine .content {
+  display: grid;
+  justify-items: end;
+}
