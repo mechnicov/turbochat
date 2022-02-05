@@ -1,0 +1,4 @@
+<% if current_user %>
+  <meta name="current-user-id" content="<%= current_user&.id %>" data-turbo-track="reload">
+  <meta name="current-user-name" content="<%= current_user&.username %>" data-turbo-track="reload">
+<% end %>
