@@ -10,13 +10,16 @@
     </div>
     <div class="flex message-author_<%= message.user.id %>">
       <div class="relative mt-1 px-4 pt-1 pb-4 w-max max-w-full text-gray-500 flex min-w-5 message-author_1 rounded-l-md rounded-b-md font-light">
+        <span class='mr-4'>
+          <%= image_tag message.user.avatar.variant(:thumb), class: 'rounded-full' if message.user.avatar.attached? %>
+        </span>
         <em>
           <%= message.user.email %>
         </em>
         <sub class="text-xs absolute right-4 bottom-0 text-gray-400 font-light">
           <%= l(message.created_at, format: :short) %>
         </sub>
-        <sub class="text-xs absolute left-4 bottom-0">
+        <sub class="text-xs absolute left-16 bottom-0">
           <%= link_to like_message_path(message), data: { "turbo-method": :post } do %>
             <%= render partial: "messages/heart", locals: { user: user, message: message } %>
             <%= render partial: "messages/likes_count", locals: { message: message } %>
