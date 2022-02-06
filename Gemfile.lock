@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/secretpray/gravatar_image_tag.git
+  revision: c81fa3f2191b59ef6f50138f0f7b5b08b962caab
+  branch: master
+  specs:
+    gravatar_image_tag (1.2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -97,6 +104,10 @@ GEM
     erubi (1.10.0)
     faker (2.19.0)
       i18n (>= 1.6, < 2)
+    faraday (2.2.0)
+      faraday-net_http (~> 2.0)
+      ruby2_keywords (>= 0.0.4)
+    faraday-net_http (2.0.1)
     ffi (1.15.5)
     globalid (1.0.0)
       activesupport (>= 5.0)
@@ -223,6 +234,8 @@ DEPENDENCIES
   devise (~> 4.8)
   draper (~> 4.0)
   faker (~> 2.19)
+  faraday
+  gravatar_image_tag!
   image_processing (~> 1.2)
   jsbundling-rails
   pg (~> 1.1)

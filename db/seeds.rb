@@ -21,9 +21,10 @@ USER_EMAIL         = %w(jane.doe john.doe admin)
 
 # service
 def create_user(email, password = '123456')
-  User.create!(email: "#{email}@example.com",
-               password: password)
+  user = User.create!(email: "#{email}@example.com",
+                      password: password)
   print '.'
+  generate_avatar(user)
 end
 
 def add_image(product)
@@ -35,6 +36,16 @@ end
 
 def not_uniq(user, message)
   Like.where(message_id: message.id, user_id: user.id).any?
+end
+
+def generate_avatar(user)
+  images = 'women.jpeg' if 'jane'.in?(user.email)
+  images ||= 'admin'.in?(user.email) ? 'man-1.jpeg' : 'man-2.jpeg'
+  return if images.nil?
+
+  path = Rails.root.join('app','assets','images', images)
+  user.avatar.attach(io: File.open(path), filename: "image-#{SecureRandom.alphanumeric(12)}.jpg", content_type: 'image/jpeg')
+  print '.'
 end
 
 #create Users
