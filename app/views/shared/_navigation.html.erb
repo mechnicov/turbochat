@@ -10,7 +10,16 @@
         <div class="hidden md:block">
           <div class="ml-10 flex items-baseline space-x-4">
             <% if user_signed_in? %>
-              <%= link_to user_nav_name(current_user), destroy_user_session_path, data: { "turbo-method": :delete }, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
+              <%= link_to destroy_user_session_path, data: { "turbo-method": :delete }, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" do %>
+                <div class='flex items-center'>
+                  <span class='mr-2'>
+                    <%= image_tag current_user.avatar.variant(:thumb), class: 'rounded-full' if current_user.avatar.attached? %>
+                  </span>
+                  <span>
+                    <%= user_nav_name(current_user) %>
+                  </span>
+                </div>
+              <% end %>
             <% else %>
               <%= link_to 'Login', new_user_session_path, class: 'text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium' %>
               <%= link_to 'Sign Up', new_user_registration_path, class: 'text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium' %>
