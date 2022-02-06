@@ -23,3 +23,7 @@ $ bin/dev
 ### License
 
 MIT – see `LICENSE`
+
+### Issue
+
+Seed: remove unused method add_images
