@@ -1,0 +1,4 @@
+<em id='<%= dom_id message%>_email'
+    class="<%= 'text-green-500' if message.room.room_user_online?(message.user.id) %>">
+  <%= message.user.email %>
+</em>

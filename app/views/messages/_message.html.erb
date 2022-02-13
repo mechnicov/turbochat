@@ -1,5 +1,6 @@
 <div class="message-container <%= dom_id(message) %> author_<%= message.user.id %>"
      data-controller="message"
+     data-search-loading-class
      data-message-mine-class="mine"
      data-message-owner-id-value="<%= message.user.id %>">
   <div class="content my-5 max-width-half grid shadow-md bg-gray-100 px-4 py-2">
@@ -13,9 +14,7 @@
         <span class='mr-4'>
           <%= image_tag message.user.avatar.variant(:thumb), class: 'rounded-full' if message.user.avatar.attached? %>
         </span>
-        <em>
-          <%= message.user.email %>
-        </em>
+        <%= render 'messages/user_online_email', message: message %>
         <sub class="text-xs absolute right-4 bottom-0 text-gray-400 font-light">
           <%= l(message.created_at, format: :short) %>
         </sub>

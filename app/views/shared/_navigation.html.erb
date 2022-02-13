@@ -10,7 +10,8 @@
         <div class="hidden md:block">
           <div class="ml-10 flex items-baseline space-x-4">
             <% if user_signed_in? %>
-              <%= link_to destroy_user_session_path, data: { "turbo-method": :delete }, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" do %>
+              <%= button_to destroy_user_session_path, method: :delete, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" do %>
+              <%#= link_to destroy_user_session_path, data: { "turbo-method": :delete }, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" do %>
                 <div class='flex items-center'>
                   <span class='mr-2'>
                     <%= image_tag current_user.avatar.variant(:thumb), class: 'rounded-full' if current_user.avatar.attached? %>
@@ -33,7 +34,8 @@
   <div class="md:hidden" id="mobile-menu">
     <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
       <% if user_signed_in? %>
-        <%= link_to user_nav_name(current_user), destroy_user_session_path, data: { "turbo-method": :delete }, class: "text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium" %>
+        <%= button_to user_nav_name(current_user), destroy_user_session_path, method: :delete, class: "text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium" %>
+        <%#= link_to user_nav_name(current_user), destroy_user_session_path, data: { "turbo-method": :delete }, class: "text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium" %>
       <% else %>
         <%= link_to "Login", new_user_session_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium" %>
         <%= link_to "SignUp", new_user_registration_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium" %>
