@@ -1,0 +1,47 @@
+<div class="inline-block text-sm px-4 py-2 leading-none rounded no-underline text-gray-300 bg-gray-800 hover:text-gray-400 hover:bg-gray-700 mt-4 lg:mt-0">
+  <div class="relative"
+       data-controller="dropdown"
+       data-action='keyup@window->dropdown#closeWithKeyboard'>
+    <div data-action="click->dropdown#toggle click@window->dropdown#hide"
+         role="button"
+         data-dropdown-target="button"
+         tabindex="0"
+         class="inline-block select-none outline-none">
+      <span class="appearance-none flex items-center inline-block text-gray-700">
+        <% if user_signed_in? %>
+          <div class="flex">
+            <span class='h-9 w-9 align-middle mr-3 rounded-full ring-2 ring-gray-700'>
+              <%= image_tag current_user.avatar.variant(:thumb), class: 'rounded-full' if current_user.avatar.attached? %>
+              <%#= AvatarPresenter.call(current_user, 40)%>
+            </span>
+            <span class='m-2'>
+              <%= user_nav_name(current_user) %>
+            </span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="h-5 w-5 text-gray-400 mt-2" fill="currentColor">
+              <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"></path>
+            </svg>
+          </div>
+        <% end %>
+      </span>
+    </div>
+    <div data-dropdown-target="menu" class="z-10 absolute -left-4 mt-2 bg-gray-800 hidden">
+      <div class="bg-gray-800 shadow rounded border border-gray-600 overflow-hidden mt-1">
+        <form>
+          <div class="flex w-full bg-yellow-500 items-center px-4 py-3" style="min-width: 150px; background: rgb(106, 90, 205);>
+            <span class='italic my-1 text-yellow-800 font-medium mr-1'>
+              <%= user_nav_name(current_user) %>
+              <%#= current_user&.email %>
+            </span>
+          </div>
+          <%= link_to 'Profile', account_path(current_user),
+          data: { action: "click->dropdown#toggle", turbo_frame: :user },
+          class: 'no-underline block pl-2 tracking-wider py-3 mt-1.5 mx-2 rounded text-gray-400 bg-gray-800 hover:bg-gray-600 hover:text-gray-300 whitespace-nowrap' %>
+          <div class="h-px m-2 bg-gray-400"></div>
+        </form>
+        <%= button_to "Sign out", destroy_user_session_path, method: :delete,
+            data: { action: "click->dropdown#toggle" },
+            class: 'no-underline text-left w-full no-underline block pl-2 tracking-wider py-3 mt-1.5 mx-2 mb-2 rounded text-gray-400 bg-gray-800 hover:bg-gray-600 hover:text-gray-300 whitespace-nowrap' %>
+      </div>
+    </div>
+  </div>
+</div>

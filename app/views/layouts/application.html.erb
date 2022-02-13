@@ -9,15 +9,17 @@
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
 </head>
-
-<body class="flex flex-col h-screen">
-
+<body class="flex flex-col h-screen antialiased"
+        data-controller='modal-user'
+        data-controller-name='<%= controller_name %>'
+        data-action-name='<%= action_name %>'>
   <%= render 'shared/navigation' %>
   <%= render 'shared/header' %>
-
-  <main class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+  <main class="mx-auto max-w-7xl w-full flex flex-col justify-center align-center py-6 sm:px-6 lg:px-8">
+    <!-- Flash container -->
+    <%= turbo_frame_tag :flash %>
     <%= yield %>
+    <%= turbo_frame_tag :user_modal, data: { modal_user_target: 'form_frame' } %>
   </main>
-
 </body>
 </html>

@@ -1,0 +1,19 @@
+<div id="<%= dom_id user %>"
+     class='min-h-96 rounded-xl transform transition duration-500' >
+  <div class="my-5 mx-3 text-xl grid grid-cols-2 gap-2 text-gray-200 justify-between items-center">
+    <div class="grid-cols-1 mx-auto ml-7">
+      <%#= AvatarPresenter.call(current_user, 150) %>
+      <%= image_tag(user.profile_avatar, class: ' ') %>
+    </div>
+    <div class="grid-cols-2 flex flex-col">
+      <%= link_to user.email, edit_user_registration_path(user),
+                  class: 'mb-2 hover:text-yellow-400 focus:opacity-90 transition duration-300 cursor-pointer',
+                  data: { turbo_frame: :user_modal } %>
+      <span class='text-xs text-gray-400'>
+        Created at <%= time_ago_in_words(user.created_at) %> ago
+      </span>
+
+    </div>
+  </div>
+  <hr>
+</div>
