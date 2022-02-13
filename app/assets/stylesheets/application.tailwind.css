@@ -16,3 +16,52 @@
   display: grid;
   justify-items: end;
 }
+
+.file_input_label {
+  align-items: center;
+  background-color: rgb(209, 213, 219);
+  color: #9CA3AF;
+  border-color: #9CA3AF;
+  border-radius: 6px;
+  border-style: solid;
+  border-width: 1px;
+  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+              rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+              rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+              rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: 90px;
+  letter-spacing: 0.4px;
+  padding: 8px 8px;
+  text-align: center;
+  text-transform: uppercase;
+  transition-duration: 0.15s;
+  transition-property: all;
+  transition-timing-function: linear;
+  width: 128px !important;
+}
+
+.file_input_label:hover {
+  background-color: rgba(55, 65, 81, 0.5);
+  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+              rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+              rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+              rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+.span-select-file {
+  margin-top: 0.5rem;
+  font-size: .8rem;
+  line-height: 1rem;
+}
+.span-select-file:hover {
+  color: rgba(209, 213, 219, .6);
+}
+
+#submit-user-modal:hover {
+  border: 3px solid rgb(106, 90, 205);
+  color: rgb(106, 90, 205);
+}

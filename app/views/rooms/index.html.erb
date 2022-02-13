@@ -4,7 +4,7 @@
   <%#= render 'rooms/user_online_count', count: Room.online_rooms_users_count %>
 </div>
 
-<%= turbo_frame_tag :rooms do %>
+<%= turbo_frame_tag :rooms, class: 'text-center' do %>
   <%= render @rooms %>
 <% end %>
 

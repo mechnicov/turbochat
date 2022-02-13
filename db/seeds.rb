@@ -17,7 +17,7 @@ MAX_USERS_COUNT    = 3
 MAX_ROOM_COUNT     = 4
 MAX_LIKES_COUNT    = 40
 MAX_MESSAGE_COUNT  = 32
-USER_EMAIL         = %w(jane.doe john.doe admin)
+USER_EMAIL         = %w(jane.doe john.doe admin max)
 
 # service
 def create_user(email, password = '123456')
@@ -41,7 +41,7 @@ end
 def generate_avatar(user)
   images = 'women.jpeg' if 'jane'.in?(user.email)
   images ||= 'admin'.in?(user.email) ? 'man-1.jpeg' : 'man-2.jpeg'
-  return if images.nil?
+  return if images.nil? # max@sample.com only
 
   path = Rails.root.join('app','assets','images', images)
   user.avatar.attach(io: File.open(path), filename: "image-#{SecureRandom.alphanumeric(12)}.jpg", content_type: 'image/jpeg')
