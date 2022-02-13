@@ -26,17 +26,21 @@
 
 <details>
   <summary>Preview</summary>
-  Fisrt stage (frontend)
+  1 stage (frontend)
   
   https://user-images.githubusercontent.com/17977331/153748789-258c035c-e526-4a61-916a-157a29fea960.mp4
   
-  Second stage (avatar)
+  2 stage (avatar)
  
   ![screen](https://user-images.githubusercontent.com/17977331/153748810-73dfad43-8e3a-437a-bdc3-eb144d617484.jpg)
 
-  Third stage (online status)
+  3 stage (online status)
   
   https://user-images.githubusercontent.com/17977331/153748830-4440b4a7-ea8f-442b-800e-720d235ecbd8.mov
+  
+  4 stage (profile modal)
+  
+  https://user-images.githubusercontent.com/17977331/153777545-1482caec-b894-418c-92e1-e6b4dda8708d.mov
   
 </details>
 
