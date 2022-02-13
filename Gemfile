@@ -16,6 +16,7 @@ gem "devise", "~> 4.8"
 gem "draper", "~> 4.0"
 gem 'image_processing', '~> 1.2'
 gem 'gravatar_image_tag', github: 'secretpray/gravatar_image_tag', branch: 'master'
+gem 'kredis', '~> 1.0'
 
 group :development, :test do
   gem "pry-rails"

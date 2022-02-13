@@ -1,5 +1,9 @@
 <%= turbo_stream_from :rooms %>
 
+<div class="mt-2 mb-3" id='rooms_online_users_count'>
+  <%#= render 'rooms/user_online_count', count: Room.online_rooms_users_count %>
+</div>
+
 <%= turbo_frame_tag :rooms do %>
   <%= render @rooms %>
 <% end %>

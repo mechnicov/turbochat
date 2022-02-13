@@ -1,12 +1,19 @@
 <%= turbo_stream_from @room %>
 <%= turbo_stream_from [current_user, @room] %>
 
+<div class="mt-2 mb-3" id='<%= dom_id(@room)%>_online_users_count'>
+  <%= render 'rooms/user_online_count', count: @room.online_room_users_count %>
+</div>
+
 <div class="flex flex-col justify-between h-grow">
   <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8"
        id="chat-container"
        data-controller="scroll"
        data-scroll-target="messages">
-    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8" id="room_<%= @room.id %>_messages">
+    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8"
+         id="room_<%= @room.id %>_messages"
+         data-controller="room-channel"
+         data-room-channel-id-value="<%= @room.title %>">
 
       <%= render partial: "messages/message", collection: @messages, locals: { user: current_user } %>
     </div>
