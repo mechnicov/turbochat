@@ -1,8 +1,10 @@
 class Room < ApplicationRecord
+  include GenerateName
   has_many :messages, -> { sorted }, dependent: :destroy
   belongs_to :user
 
   before_create { self.title = SecureRandom.hex(3) }
+  after_create_commit :generate_random_name
 
   kredis_unique_list :room_online_user_ids
 
